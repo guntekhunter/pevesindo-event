@@ -67,7 +67,7 @@ export default function Home() {
         {
           finish ? (
             <div>
-              Selamat Anda Mendapatkannyami!!
+              Selamat Anda Mendapatkannyami botol!!
             </div>
           ) : (
             <section className="space-y-[1rem]">
