@@ -19,12 +19,14 @@ export default function Home() {
   const [imageUrlUploaded, setImageUrlUploaded] = useState("");
   const [loading, setLoading] = useState(false);
   const [respond, setRespond] = useState<RespondType | null>(null)
+  const [send, setSend] = useState(true)
   const [data, setData] = useState({
     nama: "",
     alamat: "",
     pernah: "",
     hp: "",
     kota: "",
+    gambar: "",
   });
 
   const [required, setRequired] = useState<string[]>([]);
@@ -34,6 +36,20 @@ export default function Home() {
 
 
   const route = useRouter()
+
+
+  const handleUploadSuccess = (results: any) => {
+    const newUrl = results.info.secure_url;
+    setImageUrls((prevUrls) => prevUrls ? `${prevUrls}, ${newUrl}` : newUrl);
+    setData((prevData) => ({
+      ...prevData,
+      gambar: prevData.gambar ? `${prevData.gambar}, ${newUrl}` : newUrl,
+    }));
+  }
+
+  const handleSend = () => {
+    setSend(false)
+  }
 
   const sendData = async () => {
     setLoading(true);
@@ -70,74 +86,225 @@ export default function Home() {
     setLoading(false);
   };
 
-
-  const handleUploadSuccess = (results: any) => {
-    const newUrl = results.info.secure_url;
-    setImageUrls((prevUrls) => prevUrls ? `${prevUrls}, ${newUrl}` : newUrl);
-  };
-
   useEffect(() => {
-    localStorage.setItem("image", imageUrls)
+    if (imageUrls) {
+      const gambar = imageUrls
+      console.log("ini gambar", gambar)
+      setData((prevData) => ({
+        ...prevData,
+        gambar: gambar,
+      }))
+    }
   }, [imageUrls])
 
-  const handleSend = () => {
-    if (imageUrls) {
-      route.push("/form")
-    } else {
-      setIsUploaded(false);
-    }
-  }
-  return (
-    <div className="w-full flex justify-around pt-[2rem]">
-      <div className="w-[90%] space-y-[1rem]">
-        <div className="w-full bg-red-200 rounded-md">
-          oa
-        </div>
-        <h1 className="font-bold">Selamat Datang!!</h1>
-        <p>Follow akun media sosial kami terlebih dahulu</p>
-        <div className="grid grid-cols-1 gap-[1rem]">
-          <a href="https://www.youtube.com/watch?v=v_sFc5KCom4" rel="noopener noreferrer" target="_blank">
-            <Button onClick={(e: any) => route.push("")}>Instagram</Button>
-          </a>
-          <a href="https://www.youtube.com/watch?v=v_sFc5KCom4" rel="noopener noreferrer" target="_blank">
-            <Button onClick={(e: any) => route.push("")}>Youtube</Button>
-          </a>
-          <a href="https://www.youtube.com/watch?v=v_sFc5KCom4" rel="noopener noreferrer" target="_blank">
-            <Button onClick={(e: any) => route.push("")}>Tiktok</Button>
-          </a>
-        </div>
-        <div>
-          <p>Upload Bukti Screenshoot</p>
-          <div className="w-full h-[11.3rem] rounded-[1rem] border-dashed border-[2px] flex items-center justify-center relative mt-[1rem]">
-            <CldUploadWidget
-              uploadPreset="pevesindo"
-              onSuccess={handleUploadSuccess}
-            >
-              {({ open }) => {
-                return (
-                  <button
-                    className={`button ${required.includes("hight") ? "text-red-400" : ""
-                      }`}
-                    onClick={() => open()}
-                  >
-                    {
-                      imageUrls ? (
-                        <div className="w-[2rem]">
-                          <FaCheckCircle />
-                        </div>
+  console.log(imageUrls)
+  console.log(data)
 
-                      ) : (
-                        <p>Upload</p>
+  if (send) {
+    return (
+      <div className="w-full flex justify-around pt-[1.4rem] bg-[#282525] pb-[2rem] h-[100vh]">
+        <div className="w-[90%] space-y-[1rem]">
+          <div className="w-full">
+            <Image src="/romy.png" alt="" height={5000} width={5000} />
+          </div>
+          <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[1.5rem] py-[2rem]">
+            <h1 className="text-white text-center text-[.7rem] font-semibold ">MEDIA SOSIAL</h1>
+            <div className="grid grid-cols-3">
+              <a href="https://www.youtube.com/@admincsopevesindo3421" rel="noopener noreferrer" target="_blank">
+                <div className="text-center space-y-[.5rem] text-[.7rem] text-white font-medium">
+                  <div className="w-full justify-around flex">
+                    <Image src="/youtube.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                  </div>
+                  <p>YOUTUBE</p>
+                </div>
+              </a>
+              <a href="https://www.instagram.com/pevesindo.official?igsh=ZTk1YnRsNmZyZ3h0" rel="noopener noreferrer" target="_blank">
+                <div className="text-center space-y-[.5rem] text-[.7rem] text-white font-medium">
+                  <div className="w-full justify-around flex">
+                    <Image src="/instagram.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                  </div>
+                  <p>INSTAGRAM</p>
+                </div>
+              </a>
+              <a href="https://www.tiktok.com/@pevesindo?_t=8p6cmdkHXjV&_r=1" rel="noopener noreferrer" target="_blank">
+                <div className="text-center space-y-[.5rem] text-[.7rem] text-white font-medium">
+                  <div className="w-full justify-around flex">
+                    <Image src="/tiktok.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                  </div>
+                  <p>TIKTOK</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <div className="w-full h-[11.3rem] text-white rounded-[1rem] flex items-center justify-center relative mt-[1rem] bg-[#201E1F]">
+              <CldUploadWidget
+                uploadPreset="pevesindo"
+                onSuccess={handleUploadSuccess}
+              >
+                {({ open }) => {
+                  return (
+                    <button
+                      className={`button ${required.includes("hight") ? "text-red-400" : ""
+                        }`}
+                      onClick={() => open()}
+                    >
+                      {
+                        imageUrls ? (
+                          <div className="w-[2rem]">
+                            <FaCheckCircle />
+                          </div>
+
+                        ) : (
+                          <p className="text-[#F6D232]">Upload</p>
+                        )
+                      }
+                    </button>
+                  );
+                }}
+              </CldUploadWidget>
+            </div>
+          </div>
+          <Button onClick={handleSend} className={`${imageUrls ? "" : "bg-gray-300"}`}>Kirim</Button>
+        </div>
+      </div >
+    );
+  } else {
+    return (
+      <div className="w-full flex justify-around bg-[#282525] h-[100vh] py-[1.3rem] ">
+        <div className="w-[90%] space-y-[1rem] bg-[#201E1F] h-full px-[1rem] rounded-md">
+          {
+            finish ? (
+              <div className="py-[1.3rem] text-center space-y-[4rem]">
+                <div>
+                  <h1 className="text-[#F6D232] font-bold">TERIMAKASIH</h1>
+                  <p className="text-white text-[.8rem]">
+                    Telah Mengisi Link Dari Pevesindo
+                  </p>
+                </div>
+                <div className="w-full flex justify-center">
+                  <Image src="/botol.png" alt="" width={1000} height={1000} className="w-[10rem]" />
+                </div>
+                <p className="text-white text-[.8rem]">
+                  Silahkan mengambil merchandise ini di tim kami yang ada di stand
+                </p>
+              </div>
+            ) : (
+              <section className="space-y-[1rem]">
+                <div className="grid grid-cols-1 gap-3 py-[1rem] text-[#B5B5B5]">
+                  <div className="space-y-[0.2rem] ">
+                    <p>Nama</p>
+                    <input
+                      required
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      type="text"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          nama: e.target.value,
+                        }))
+                      }
+                    />
+                    {
+                      required.includes("nama") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi Nama</p>
                       )
                     }
-                  </button>
-                );
-              }}
-            </CldUploadWidget>
-          </div>
+
+                  </div>
+                  <div className="block space-y-[0.2rem]">
+                    <p>Alamat</p>
+                    <input
+                      required
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      type="text"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          alamat: e.target.value,
+                        }))
+                      }
+                    />
+                    {
+                      required.includes("alamat") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi Alamat</p>
+                      )
+                    }
+                  </div>
+                  <div className="block space-y-[0.2rem]">
+                    <p>Hp</p>
+                    <input
+                      required
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      type="text"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          hp: e.target.value,
+                        }))
+                      }
+                    />
+                    {
+                      required.includes("hp") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi No Hp</p>
+                      )
+                    }
+                  </div>
+                  <div className="block space-y-[0.2rem]">
+                    <p>Kota</p>
+                    <input
+                      required
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      type="text"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          kota: e.target.value,
+                        }))
+                      }
+                    />
+                    {
+                      required.includes("kota") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi Kota</p>
+                      )
+                    }
+                  </div>
+                  <div className="block space-y-[0.2rem]">
+                    <p>Pernah Mendengar Tentang Pevesindo?</p>
+                    <select
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          pernah: e.target.value,
+                        }))
+                      }
+                    >
+                      <option value="">---</option>
+                      <option value="Ya">Ya</option>
+                      <option value="Tidak">Tidak</option>
+                    </select>
+                    {
+                      required.includes("kota") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi Kota</p>
+                      )
+                    }
+                  </div>
+                </div>
+                <button onClick={sendData} className="bg-[#F6D232] w-full py-[1rem] rounded-md flex justify-center">
+                  {!loading ? (
+                    <p>Kirim</p>
+                  ) : (
+                    <AiOutlineLoading3Quarters className="animate-spin" />
+                  )}
+                </button>
+              </section>
+
+            )
+          }
         </div>
-        <Button onClick={handleSend} className={`${imageUrls ? "" : "bg-gray-300"}`}>Kirim</Button>
       </div>
-    </div >
-  );
+    )
+  }
 }

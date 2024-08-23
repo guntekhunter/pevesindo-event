@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
     const res = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: "A1:E1",
+      range: "A1:F1",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
@@ -33,6 +33,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
             reqBody.pernah,
             reqBody.hp,
             reqBody.kota,
+            reqBody.gambar,
           ],
         ],
       },

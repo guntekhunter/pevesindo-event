@@ -6,12 +6,12 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface RespondType {
   status: string;
-  // Add other properties of `respond` if they exist
 }
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [respond, setRespond] = useState<RespondType | null>(null)
+  const [send, setSend] = useState(true)
   const [data, setData] = useState({
     nama: "",
     alamat: "",
@@ -57,26 +57,44 @@ export default function Home() {
     }
     setLoading(false);
   };
+  useEffect(() => {
+    const bukti = localStorage.getItem("gambar");
+    console.log(bukti)
+    if (bukti) {
+      setData(prevData => ({
+        ...prevData,
+        bukti: bukti
+      }));
+    }
+  }, []);
 
   return (
-    <div className="w-full flex justify-around pt-[2rem]">
-      <div className="w-[80%] space-y-[1rem]">
-        <section>
-          kasdk
-        </section>
+    <div className="w-full flex justify-around bg-[#282525] h-[100vh] py-[1.3rem] ">
+      <div className="w-[90%] space-y-[1rem] bg-[#201E1F] h-full px-[1rem] rounded-md">
         {
           finish ? (
-            <div>
-              Selamat Anda Mendapatkannyami botol!!
+            <div className="py-[1.3rem] text-center space-y-[4rem]">
+              <div>
+                <h1 className="text-[#F6D232] font-bold">TERIMAKASIH</h1>
+                <p className="text-white text-[.8rem]">
+                  Telah Mengisi Link Dari Pevesindo
+                </p>
+              </div>
+              <div className="w-full flex justify-center">
+                <Image src="/botol.png" alt="" width={1000} height={1000} className="w-[10rem]" />
+              </div>
+              <p className="text-white text-[.8rem]">
+                Silahkan mengambil merchandise ini di tim kami yang ada di stand
+              </p>
             </div>
           ) : (
             <section className="space-y-[1rem]">
-              <div className="grid grid-cols-1 gap-3">
-                <div className="space-y-[0.2rem]">
+              <div className="grid grid-cols-1 gap-3 py-[1rem] text-[#B5B5B5]">
+                <div className="space-y-[0.2rem] ">
                   <p>Nama</p>
                   <input
                     required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
+                    className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
                     type="text"
                     onChange={(e) =>
                       setData((prevData) => ({
@@ -96,7 +114,7 @@ export default function Home() {
                   <p>Alamat</p>
                   <input
                     required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
+                    className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
                     type="text"
                     onChange={(e) =>
                       setData((prevData) => ({
@@ -115,7 +133,7 @@ export default function Home() {
                   <p>Hp</p>
                   <input
                     required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
+                    className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
                     type="text"
                     onChange={(e) =>
                       setData((prevData) => ({
@@ -134,7 +152,7 @@ export default function Home() {
                   <p>Kota</p>
                   <input
                     required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
+                    className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
                     type="text"
                     onChange={(e) =>
                       setData((prevData) => ({
@@ -152,7 +170,7 @@ export default function Home() {
                 <div className="block space-y-[0.2rem]">
                   <p>Pernah Mendengar Tentang Pevesindo?</p>
                   <select
-                    className="w-full p-[.5rem] rounded-md border border-gray-200"
+                    className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
                     onChange={(e) =>
                       setData((prevData) => ({
                         ...prevData,
