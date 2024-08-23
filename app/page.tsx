@@ -3,6 +3,12 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Button from "./component/Button";
+import { useRouter } from "next/navigation";
+import { FaInstagram } from "react-icons/fa";
+import { CldUploadWidget } from "next-cloudinary";
+import { FaCheckCircle } from "react-icons/fa";
+
 
 interface RespondType {
   status: string;
@@ -10,6 +16,7 @@ interface RespondType {
 }
 
 export default function Home() {
+  const [imageUrlUploaded, setImageUrlUploaded] = useState("");
   const [loading, setLoading] = useState(false);
   const [respond, setRespond] = useState<RespondType | null>(null)
   const [data, setData] = useState({
@@ -22,6 +29,11 @@ export default function Home() {
 
   const [required, setRequired] = useState<string[]>([]);
   const [finish, setFinish] = useState(false)
+  const [imageUrls, setImageUrls] = useState<string>("");
+  const [isUploaded, setIsUploaded] = useState(true);
+
+
+  const route = useRouter()
 
   const sendData = async () => {
     setLoading(true);
@@ -58,131 +70,68 @@ export default function Home() {
     setLoading(false);
   };
 
+
+  const handleUploadSuccess = (results: any) => {
+    const newUrl = results.info.secure_url;
+    setImageUrls((prevUrls) => prevUrls ? `${prevUrls}, ${newUrl}` : newUrl);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("image", imageUrls)
+  }, [imageUrls])
+
+  const handleSend = () => {
+    if (imageUrls) {
+      route.push("/form")
+    } else {
+      setIsUploaded(false);
+    }
+  }
   return (
     <div className="w-full flex justify-around pt-[2rem]">
       <div className="w-[80%] space-y-[1rem]">
-        <section>
-          kasdk
-        </section>
-        {
-          finish ? (
-            <div>
-              Selamat Anda Mendapatkannyami botol!!
-            </div>
-          ) : (
-            <section className="space-y-[1rem]">
-              <div className="grid grid-cols-1 gap-3">
-                <div className="space-y-[0.2rem]">
-                  <p>Nama</p>
-                  <input
-                    required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
-                    type="text"
-                    onChange={(e) =>
-                      setData((prevData) => ({
-                        ...prevData,
-                        nama: e.target.value,
-                      }))
-                    }
-                  />
-                  {
-                    required.includes("nama") && (
-                      <p className="text-[.5rem] text-red-600">Silahkan Isi Nama</p>
-                    )
-                  }
-
-                </div>
-                <div className="block space-y-[0.2rem]">
-                  <p>Alamat</p>
-                  <input
-                    required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
-                    type="text"
-                    onChange={(e) =>
-                      setData((prevData) => ({
-                        ...prevData,
-                        alamat: e.target.value,
-                      }))
-                    }
-                  />
-                  {
-                    required.includes("alamat") && (
-                      <p className="text-[.5rem] text-red-600">Silahkan Isi Alamat</p>
-                    )
-                  }
-                </div>
-                <div className="block space-y-[0.2rem]">
-                  <p>Hp</p>
-                  <input
-                    required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
-                    type="text"
-                    onChange={(e) =>
-                      setData((prevData) => ({
-                        ...prevData,
-                        hp: e.target.value,
-                      }))
-                    }
-                  />
-                  {
-                    required.includes("hp") && (
-                      <p className="text-[.5rem] text-red-600">Silahkan Isi No Hp</p>
-                    )
-                  }
-                </div>
-                <div className="block space-y-[0.2rem]">
-                  <p>Kota</p>
-                  <input
-                    required
-                    className="w-full p-[.5rem] rounded-md border border-gray-200 "
-                    type="text"
-                    onChange={(e) =>
-                      setData((prevData) => ({
-                        ...prevData,
-                        kota: e.target.value,
-                      }))
-                    }
-                  />
-                  {
-                    required.includes("kota") && (
-                      <p className="text-[.5rem] text-red-600">Silahkan Isi Kota</p>
-                    )
-                  }
-                </div>
-                <div className="block space-y-[0.2rem]">
-                  <p>Pernah Mendengar Tentang Pevesindo?</p>
-                  <select
-                    className="w-full p-[.5rem] rounded-md border border-gray-200"
-                    onChange={(e) =>
-                      setData((prevData) => ({
-                        ...prevData,
-                        pernah: e.target.value,
-                      }))
-                    }
+        <h1 className="font-bold">Selamat Datang!!</h1>
+        <p>Follow akun media sosial kami terlebih dahulu</p>
+        <div className="grid grid-cols-1 gap-[1rem]">
+          <a href="https://www.youtube.com/watch?v=v_sFc5KCom4" rel="noopener noreferrer" target="_blank">
+            <Button onClick={(e: any) => route.push("")}>Instagram</Button>
+          </a>
+          <a href="https://www.youtube.com/watch?v=v_sFc5KCom4" rel="noopener noreferrer" target="_blank">
+            <Button onClick={(e: any) => route.push("")}>Youtube</Button>
+          </a>
+          <a href="https://www.youtube.com/watch?v=v_sFc5KCom4" rel="noopener noreferrer" target="_blank">
+            <Button onClick={(e: any) => route.push("")}>Tiktok</Button>
+          </a>
+        </div>
+        <div>
+          <p>Upload Bukti Screenshoot</p>
+          <div className="w-full h-[11.3rem] rounded-[1rem] border-dashed border-[2px] flex items-center justify-center relative mt-[1rem]">
+            <CldUploadWidget
+              uploadPreset="pevesindo"
+              onSuccess={handleUploadSuccess}
+            >
+              {({ open }) => {
+                return (
+                  <button
+                    className={`button ${required.includes("hight") ? "text-red-400" : ""
+                      }`}
+                    onClick={() => open()}
                   >
-                    <option value="">---</option>
-                    <option value="Ya">Ya</option>
-                    <option value="Tidak">Tidak</option>
-                  </select>
-                  {
-                    required.includes("kota") && (
-                      <p className="text-[.5rem] text-red-600">Silahkan Isi Kota</p>
-                    )
-                  }
-                </div>
-              </div>
-              <button onClick={sendData} className="bg-[#F6D232] w-full py-[1rem] rounded-md flex justify-center">
-                {!loading ? (
-                  <p>Kirim</p>
-                ) : (
-                  <AiOutlineLoading3Quarters className="animate-spin" />
-                )}
-              </button>
-            </section>
-
-          )
-        }
+                    {
+                      imageUrls ? (
+                        <FaCheckCircle />
+                      ) : (
+                        <p>Upload</p>
+                      )
+                    }
+                  </button>
+                );
+              }}
+            </CldUploadWidget>
+          </div>
+        </div>
+        <Button onClick={handleSend} className={`${imageUrls ? "" : "bg-gray-300"}`}>Ommaleka</Button>
       </div>
-    </div>
+    </div >
   );
 }

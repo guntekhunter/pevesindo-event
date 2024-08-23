@@ -30,8 +30,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
           [
             reqBody.nama,
             reqBody.alamat,
-            reqBody.hp,
             reqBody.pernah,
+            reqBody.hp,
             reqBody.kota,
           ],
         ],
