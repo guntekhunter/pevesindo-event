@@ -108,6 +108,17 @@ export default function Home() {
             <Image src="/romy.png" alt="" height={5000} width={5000} />
           </div>
           <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] py-[2rem]">
+            <div className="space-y-[2rem]">
+              <h1 className="text-white text-center text-[.7rem] font-semibold ">Hadiah Dri Pevesindo!!</h1>
+              <div className="w-full flex justify-center">
+                <div className="w-[80%] flex justify-between">
+                  <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[5rem]" />
+                  <Image src="/vocer.png" alt="" height={1000} width={1000} className="w-[7rem] h-[7rem] shadow-md" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] py-[2rem]">
             <div className="space-y-[.5rem]">
               <h1 className="text-white text-center text-[.7rem] font-semibold ">Dapatan Hadiah Menarik Dari Pevesindo!!</h1>
               <p className="text-white text-center text-[.6rem]">Silahkan Follow Media Sosial Pevesindo, Klik Tombol dibawah untuk menuju media sosial kami</p>
