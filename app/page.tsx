@@ -107,15 +107,18 @@ export default function Home() {
           <div className="w-full">
             <Image src="/romy.png" alt="" height={5000} width={5000} />
           </div>
-          <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[1.5rem] py-[2rem]">
-            <h1 className="text-white text-center text-[.7rem] font-semibold ">MEDIA SOSIAL</h1>
+          <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] py-[2rem]">
+            <div className="space-y-[.5rem]">
+              <h1 className="text-white text-center text-[.7rem] font-semibold ">Dapatan Hadiah Menarik Dari Pevesindo!!</h1>
+              <p className="text-white text-center text-[.6rem]">Silahkan Follow Media Sosial Pevesindo, Klik Tombol dibawah untuk menuju media sosial kami</p>
+            </div>
             <div className="grid grid-cols-3">
               <a href="https://www.youtube.com/@admincsopevesindo3421" rel="noopener noreferrer" target="_blank">
                 <div className="text-center space-y-[.5rem] text-[.7rem] text-white font-medium">
                   <div className="w-full justify-around flex">
-                    <Image src="/youtube.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                    <Image src="/youtube.png" alt="" height={5000} width={5000} className="w-[2rem]" />
                   </div>
-                  <p>YOUTUBE</p>
+                  <p>Pevesindo Official</p>
                 </div>
               </a>
               <a href="https://www.instagram.com/pevesindo.official?igsh=ZTk1YnRsNmZyZ3h0" rel="noopener noreferrer" target="_blank">
@@ -123,7 +126,7 @@ export default function Home() {
                   <div className="w-full justify-around flex">
                     <Image src="/instagram.png" alt="" height={1000} width={1000} className="w-[2rem]" />
                   </div>
-                  <p>INSTAGRAM</p>
+                  <p>pevesindo.official</p>
                 </div>
               </a>
               <a href="https://www.tiktok.com/@pevesindo?_t=8p6cmdkHXjV&_r=1" rel="noopener noreferrer" target="_blank">
@@ -131,7 +134,7 @@ export default function Home() {
                   <div className="w-full justify-around flex">
                     <Image src="/tiktok.png" alt="" height={1000} width={1000} className="w-[2rem]" />
                   </div>
-                  <p>TIKTOK</p>
+                  <p>pevesindo</p>
                 </div>
               </a>
             </div>
@@ -157,7 +160,11 @@ export default function Home() {
                           </div>
 
                         ) : (
-                          <p className="text-[#F6D232]">Upload</p>
+                          <div className="w-full flex justify-around ">
+                            <div className="w-[80%]">
+                              <p className="text-[#F6D232] text-[.7rem]">Klik Disini Untuk Upload Bukti Follow Media sosial Pevesinddo</p>
+                            </div>
+                          </div>
                         )
                       }
                     </button>
