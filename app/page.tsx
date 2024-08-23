@@ -89,7 +89,10 @@ export default function Home() {
   }
   return (
     <div className="w-full flex justify-around pt-[2rem]">
-      <div className="w-[80%] space-y-[1rem]">
+      <div className="w-[90%] space-y-[1rem]">
+        <div className="w-full bg-red-200 rounded-md">
+          oa
+        </div>
         <h1 className="font-bold">Selamat Datang!!</h1>
         <p>Follow akun media sosial kami terlebih dahulu</p>
         <div className="grid grid-cols-1 gap-[1rem]">
@@ -119,7 +122,10 @@ export default function Home() {
                   >
                     {
                       imageUrls ? (
-                        <FaCheckCircle />
+                        <div className="w-[2rem]">
+                          <FaCheckCircle />
+                        </div>
+
                       ) : (
                         <p>Upload</p>
                       )
@@ -130,7 +136,7 @@ export default function Home() {
             </CldUploadWidget>
           </div>
         </div>
-        <Button onClick={handleSend} className={`${imageUrls ? "" : "bg-gray-300"}`}>Ommaleka</Button>
+        <Button onClick={handleSend} className={`${imageUrls ? "" : "bg-gray-300"}`}>Kirim</Button>
       </div>
     </div >
   );
