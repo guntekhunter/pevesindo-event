@@ -58,8 +58,6 @@ export default function Home() {
     setLoading(false);
   };
 
-  console.log(localStorage.getItem("image"))
-
   return (
     <div className="w-full flex justify-around pt-[2rem]">
       <div className="w-[80%] space-y-[1rem]">
