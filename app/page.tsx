@@ -2,6 +2,7 @@
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface RespondType {
   status: string;
@@ -66,7 +67,7 @@ export default function Home() {
         {
           finish ? (
             <div>
-              Selamat Anda Mendapatnya!!
+              Selamat Anda Mendapatkannyami!!
             </div>
           ) : (
             <section className="space-y-[1rem]">
@@ -174,7 +175,7 @@ export default function Home() {
                 {!loading ? (
                   <p>Kirim</p>
                 ) : (
-                  <Image src="/loading.png" height={300} width={300} alt="loading ..." className="animate-spin w-[1rem]" />
+                  <AiOutlineLoading3Quarters className="animate-spin" />
                 )}
               </button>
             </section>
