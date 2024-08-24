@@ -142,28 +142,28 @@ export default function Home() {
                 <div className="flex justify-around mt-[1.5rem] mb-[1rem]">
                   <div>
                     <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[4.5rem]" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
+                    <p className="text-[1rem] text-white text-center pt-[.2rem]">Tumbler</p>
                   </div>
                   <div>
                     <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[7rem]" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
+                    <p className="text-[1rem] text-white text-center pt-[.2rem]">Mug</p>
                   </div>
                 </div>
                 <div className="">
                   <div className="w-full flex justify-center">
                     <div className="w-[53%]">
                       <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
+                      <p className="text-[1rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-[1rem] mt-[.5rem]">
                     <div className="h-[4rem] w-full">
                       <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
+                      <p className="text-[1rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
                     </div>
                     <div className="h-[4rem]">
                       <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
+                      <p className="text-[1rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
                     </div>
                   </div>
                 </div>
@@ -253,28 +253,28 @@ export default function Home() {
                     <div className="flex justify-around mt-[1.5rem] mb-[1rem]">
                       <div>
                         <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[4.5rem]" />
-                        <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
+                        <p className="text-[1rem] text-white text-center pt-[.2rem]">Tumbler</p>
                       </div>
                       <div>
                         <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[7rem]" />
-                        <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
+                        <p className="text-[1rem] text-white text-center pt-[.2rem]">Mug</p>
                       </div>
                     </div>
                     <div className="">
                       <div className="w-full flex justify-center">
                         <div className="w-[53%]">
                           <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                          <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
+                          <p className="text-[1rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
                         </div>
                       </div>
                       <div className="grid grid-cols-2 gap-[1rem] mt-[.5rem]">
                         <div className="h-[4rem] w-full">
                           <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                          <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
+                          <p className="text-[1rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
                         </div>
                         <div className="h-[4rem]">
                           <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                          <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
+                          <p className="text-[1rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
                         </div>
                       </div>
                     </div>
