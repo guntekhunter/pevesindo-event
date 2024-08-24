@@ -234,7 +234,6 @@ export default function Home() {
           {
             finish ? (
               <div className="py-[1.3rem] text-center space-y-[4rem]">
-                <h1 className="text-[#F6D232] font-bold">SELAMAT</h1>
                 <div className="space-y-[2rem]">
                   <div className="w-full">
                     <div className="grid grid-cols-3 gap-3">
@@ -268,7 +267,7 @@ export default function Home() {
                 <div className="w-full">
                   <div className="text-white text-[.8rem] mb-[1rem] space-y-[1rem]">
                     <p className="text-white text-[.8rem]">
-                      Giveaway Anda Dapat Di Ambil Di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span>
+                      SELAMAT, Giveaway Anda Dapat Di Ambil Di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span>
                     </p>
                     <p>Hanya Dari Tanggal 28 Agustus Sampai 1 September 2024</p>
                   </div>
