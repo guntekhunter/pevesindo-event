@@ -8,12 +8,22 @@ import { useRouter } from "next/navigation";
 import { FaInstagram } from "react-icons/fa";
 import { CldUploadWidget } from "next-cloudinary";
 import { FaCheckCircle } from "react-icons/fa";
+import Select from "react-select";
 
 
 interface RespondType {
   status: string;
   // Add other properties of `respond` if they exist
 }
+
+const options = [
+  { value: "plafon", label: "Plafon" },
+  { value: "lantai vinyl", label: "Lantai Vinyl" },
+  { value: "lantai spc", label: "Lantai SPC" },
+  { value: "wallpanel", label: "Wallpanel" },
+  { value: "wallboard", label: "Wallboard" },
+  { value: "marmer pvc", label: "Marmer PVC" },
+];
 
 export default function Home() {
   const [imageUrlUploaded, setImageUrlUploaded] = useState("");
@@ -23,9 +33,12 @@ export default function Home() {
   const [data, setData] = useState({
     nama: "",
     alamat: "",
-    pernah: "",
     hp: "",
+    pekerjaan: "",
     kota: "",
+    produk: "",
+    pernah_dengar_pevesindo: "",
+    rencana_renovasi: "",
     gambar: "",
   });
 
@@ -34,6 +47,11 @@ export default function Home() {
   const [imageUrls, setImageUrls] = useState<string>("");
   const [isUploaded, setIsUploaded] = useState(true);
 
+  const handleChange = (selectedOptions: any) => {
+    const selectedValues = selectedOptions.map((option: { value: any; }) => option.value).join(", ");
+    setData({ ...data, produk: selectedValues });
+  };
+
 
   const route = useRouter()
 
@@ -41,7 +59,7 @@ export default function Home() {
   const handleUploadSuccess = (results: any) => {
     const newUrl = results.info.secure_url;
     setImageUrls((prevUrls) => prevUrls ? `${prevUrls}, ${newUrl}` : newUrl);
-    setData((prevData) => ({
+    setData((prevData: any) => ({
       ...prevData,
       gambar: prevData.gambar ? `${prevData.gambar}, ${newUrl}` : newUrl,
     }));
@@ -102,14 +120,14 @@ export default function Home() {
 
   if (send) {
     return (
-      <div className="w-full flex justify-around pt-[1.4rem] bg-[#282525] pb-[2rem] h-[100vh]">
+      <div className="w-full flex justify-around pt-[1.4rem] bg-[#282525] pb-[2rem] min-h-screen">
         <div className="w-[90%] space-y-[1rem]">
           <div className="w-full">
             <Image src="/romy.png" alt="" height={5000} width={5000} />
           </div>
           <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] py-[2rem]">
             <div className="space-y-[2rem]">
-              <h1 className="text-white text-center text-[.7rem] font-semibold ">Hadiah Dri Pevesindo!!</h1>
+              <h1 className="text-white text-center text-[.7rem] font-semibold ">HADIAH LANGSUNG UNTUK ANDA</h1>
               <div className="w-full flex justify-center">
                 <div className="w-[80%] flex justify-between">
                   <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[5rem]" />
@@ -190,27 +208,32 @@ export default function Home() {
     );
   } else {
     return (
-      <div className="w-full flex justify-around bg-[#282525] h-[100vh] py-[1.3rem] ">
-        <div className="w-[90%] space-y-[1rem] bg-[#201E1F] h-full px-[1rem] rounded-md">
+      <div className="w-full flex justify-around bg-[#282525] py-[1.3rem] min-h-screen">
+        <div className="w-[90%] space-y-[1rem] bg-[#201E1F] h-full px-[1rem] rounded-md pb-[1rem]">
           {
             finish ? (
               <div className="py-[1.3rem] text-center space-y-[4rem]">
                 <div>
-                  <h1 className="text-[#F6D232] font-bold">TERIMAKASIH</h1>
+                  <h1 className="text-[#F6D232] font-bold">SELAMAT</h1>
                   <p className="text-white text-[.8rem]">
-                    Telah Mengisi Link Dari Pevesindo
+                    Anda Mendapatkan Hadiah Dari Pevesindo
                   </p>
                 </div>
                 <div className="w-full flex justify-center">
                   <Image src="/botol.png" alt="" width={1000} height={1000} className="w-[10rem]" />
                 </div>
-                <p className="text-white text-[.8rem]">
-                  Silahkan mengambil merchandise ini di tim kami yang ada di stand
-                </p>
+                <div className="w-full">
+                  <div>
+                    <p className="text-white text-[.8rem]">
+                      Silahkan mengambil merchandise ini di tim kami yang ada di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span> dari tanggal 28 Agustus - 1 September 2024
+                    </p>
+                  </div>
+                </div>
               </div>
             ) : (
               <section className="space-y-[1rem]">
                 <div className="grid grid-cols-1 gap-3 py-[1rem] text-[#B5B5B5]">
+                  <h1 className="font-bold text-center">Informasi Lontak</h1>
                   <div className="space-y-[0.2rem] ">
                     <p>Nama</p>
                     <input
@@ -251,7 +274,7 @@ export default function Home() {
                     }
                   </div>
                   <div className="block space-y-[0.2rem]">
-                    <p>Hp</p>
+                    <p>No Handphone</p>
                     <input
                       required
                       className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
@@ -266,6 +289,25 @@ export default function Home() {
                     {
                       required.includes("hp") && (
                         <p className="text-[.5rem] text-red-600">Silahkan Isi No Hp</p>
+                      )
+                    }
+                  </div>
+                  <div className="block space-y-[0.2rem]">
+                    <p>Pekerjaan</p>
+                    <input
+                      required
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      type="text"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          pekerjaan: e.target.value,
+                        }))
+                      }
+                    />
+                    {
+                      required.includes("kota") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi Kota</p>
                       )
                     }
                   </div>
@@ -288,18 +330,53 @@ export default function Home() {
                       )
                     }
                   </div>
+                  <h1 className="font-bold text-center">Rencana Pembelian Material Dekorasi</h1>
+                  <div className="mb-4">
+                    <p className="py-[.5rem]">Produk yang diminati:</p>
+                    <Select
+                      isMulti
+                      name="produk"
+                      options={options}
+                      className="basic-multi-select rounded-md bg-[#312D2E] shadow-md"
+                      classNamePrefix="select"
+                      onChange={handleChange}
+                    />
+                  </div>
                   <div className="block space-y-[0.2rem]">
                     <p>Pernah Mendengar Tentang Pevesindo?</p>
+
                     <select
                       className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
                       onChange={(e) =>
                         setData((prevData) => ({
                           ...prevData,
-                          pernah: e.target.value,
+                          pernah_dengar_pevesindo: e.target.value,
                         }))
                       }
                     >
-                      <option value="">---</option>
+                      <option value="">select</option>
+                      <option value="Ya">Ya</option>
+                      <option value="Tidak">Tidak</option>
+                    </select>
+                    {
+                      required.includes("kota") && (
+                        <p className="text-[.5rem] text-red-600">Silahkan Isi Kota</p>
+                      )
+                    }
+                  </div>
+                  <div className="block space-y-[0.2rem]">
+                    <p>Ada Rencana Untuk Renovasi Rumah?</p>
+
+                    <select
+                      className="w-full p-[.5rem] rounded-md bg-[#312D2E] shadow-md"
+                      onChange={(e) =>
+                        setData((prevData) => ({
+                          ...prevData,
+                          rencana_renovasi: e.target.value,
+                        }))
+                      }
+                    >
+                      <option value="">Select</option>
                       <option value="Ya">Ya</option>
                       <option value="Tidak">Tidak</option>
                     </select>
