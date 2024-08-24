@@ -145,12 +145,12 @@ export default function Home() {
                 </div>
                 <div className="flex justify-around">
                   <div>
-                    <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[3rem]" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
+                    <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
                   </div>
                   <div>
-                    <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[5rem]" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
+                    <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[3rem]" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
                   </div>
 
                 </div>
@@ -236,42 +236,13 @@ export default function Home() {
               <div className="py-[1.3rem] text-center space-y-[4rem]">
                 <div>
                   <h1 className="text-[#F6D232] font-bold">SELAMAT</h1>
-                  <p className="text-white text-[.8rem]">
-                    Anda Mendapatkan Hadiah Dari Pevesindo
-                  </p>
                 </div>
                 <div className="w-full">
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="h-[4rem]">
-                      <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
-                    </div>
-                    <div className="h-[4rem]">
-                      <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
-                    </div>
-                    <div className="h-[4rem]">
-                      <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
-                    </div>
-                  </div>
-                  <div className="flex justify-around">
-                    <div>
-                      <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[3rem]" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
-                    </div>
-                    <div>
-                      <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[5rem]" />
-                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
-                    </div>
-
-                  </div>
-                </div>
-                <div className="w-full">
-                  <div>
+                  <div className="text-white text-[.8rem] mb-[1rem] space-y-[1rem]">
                     <p className="text-white text-[.8rem]">
-                      Silahkan mengambil salah satu merchandise ini di tim kami yang ada di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span> dari tanggal 28 Agustus - 1 September 2024
+                      Giveaway Anda Dapat Di Ambil Di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span>
                     </p>
+                    <p>Hanya Dari Tanggal 28 Agustus Sampai 1 September 2024</p>
                   </div>
                 </div>
               </div>
