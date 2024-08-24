@@ -128,10 +128,31 @@ export default function Home() {
           <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] py-[2rem]">
             <div className="space-y-[2rem]">
               <h1 className="text-white text-center text-[.7rem] font-semibold ">HADIAH LANGSUNG UNTUK ANDA</h1>
-              <div className="w-full flex justify-center">
-                <div className="w-[80%] flex justify-between">
-                  <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[5rem]" />
-                  <Image src="/vocer.png" alt="" height={1000} width={1000} className="w-[7rem] h-[7rem] shadow-md" />
+              <div className="w-full">
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="h-[4rem]">
+                    <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
+                  </div>
+                  <div className="h-[4rem]">
+                    <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
+                  </div>
+                  <div className="h-[4rem]">
+                    <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
+                  </div>
+                </div>
+                <div className="flex justify-around">
+                  <div>
+                    <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[3rem]" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
+                  </div>
+                  <div>
+                    <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[5rem]" />
+                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -219,13 +240,37 @@ export default function Home() {
                     Anda Mendapatkan Hadiah Dari Pevesindo
                   </p>
                 </div>
-                <div className="w-full flex justify-center">
-                  <Image src="/botol.png" alt="" width={1000} height={1000} className="w-[10rem]" />
+                <div className="w-full">
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="h-[4rem]">
+                      <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
+                    </div>
+                    <div className="h-[4rem]">
+                      <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
+                    </div>
+                    <div className="h-[4rem]">
+                      <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
+                    </div>
+                  </div>
+                  <div className="flex justify-around">
+                    <div>
+                      <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[3rem]" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
+                    </div>
+                    <div>
+                      <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[5rem]" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
+                    </div>
+
+                  </div>
                 </div>
                 <div className="w-full">
                   <div>
                     <p className="text-white text-[.8rem]">
-                      Silahkan mengambil merchandise ini di tim kami yang ada di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span> dari tanggal 28 Agustus - 1 September 2024
+                      Silahkan mengambil salah satu merchandise ini di tim kami yang ada di <span className="font-bold">BOOTH 26/33 Area Atrium TSM Makassar</span> dari tanggal 28 Agustus - 1 September 2024
                     </p>
                   </div>
                 </div>
