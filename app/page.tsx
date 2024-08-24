@@ -9,6 +9,7 @@ import { FaInstagram } from "react-icons/fa";
 import { CldUploadWidget } from "next-cloudinary";
 import { FaCheckCircle } from "react-icons/fa";
 import Select from "react-select";
+import JSConfetti from "js-confetti";
 
 
 interface RespondType {
@@ -116,7 +117,16 @@ export default function Home() {
   }, [imageUrls])
 
   console.log(imageUrls)
-  console.log(data)
+  console.log(finish)
+
+  useEffect(() => {
+    if (finish) {
+      const jsConfetti = new JSConfetti();
+      jsConfetti.addConfetti({
+        confettiColors: ["#a855f7", "#3b0764", "#ef4444", "#ec4899", "#2563eb"],
+      });
+    }
+  }, [finish])
 
   if (send) {
     return (
@@ -125,35 +135,39 @@ export default function Home() {
           <div className="w-full">
             <Image src="/romy.png" alt="" height={5000} width={5000} />
           </div>
-          <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] py-[2rem]">
+          <div className="rounded-md p-[1rem] bg-[#201E1F] shadow-md space-y-[2rem] pt-[2rem] pb-[3rem]">
             <div className="space-y-[2rem]">
-              <h1 className="text-white text-center text-[.7rem] font-semibold ">HADIAH LANGSUNG UNTUK ANDA</h1>
+              <h1 className="text-white text-center text-[1rem] font-semibold">HADIAH LANGSUNG UNTUK ANDA</h1>
               <div className="w-full">
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="h-[4rem]">
-                    <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
-                  </div>
-                  <div className="h-[4rem]">
-                    <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
-                  </div>
-                  <div className="h-[4rem]">
-                    <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                    <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
-                  </div>
-                </div>
-                <div className="flex justify-around">
+                <div className="flex justify-around mt-[1.5rem] mb-[1rem]">
                   <div>
-                    <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                    <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[4.5rem]" />
                     <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
                   </div>
                   <div>
-                    <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[3rem]" />
+                    <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[7rem]" />
                     <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
                   </div>
-
                 </div>
+                <div className="">
+                  <div className="w-full flex justify-center">
+                    <div className="w-[53%]">
+                      <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-[1rem] mt-[.5rem]">
+                    <div className="h-[4rem] w-full">
+                      <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
+                    </div>
+                    <div className="h-[4rem]">
+                      <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                      <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -236,31 +250,35 @@ export default function Home() {
               <div className="py-[1.3rem] text-center space-y-[4rem]">
                 <div className="space-y-[2rem]">
                   <div className="w-full">
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="h-[4rem]">
-                        <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
-                        <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
-                      </div>
-                      <div className="h-[4rem]">
-                        <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className="w-[7rem] shadow-md shadow-md" />
-                        <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
-                      </div>
-                      <div className="h-[4rem]">
-                        <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
-                        <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
-                      </div>
-                    </div>
-                    <div className="flex justify-around">
+                    <div className="flex justify-around mt-[1.5rem] mb-[1rem]">
                       <div>
-                        <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[2rem]" />
+                        <Image src="/botol.png" alt="" height={1000} width={1000} className="w-[4.5rem]" />
                         <p className="text-[.5rem] text-white text-center pt-[.2rem]">Tumbler</p>
                       </div>
                       <div>
-                        <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[3rem]" />
+                        <Image src="/mug.png" alt="" height={1000} width={1000} className="w-[7rem]" />
                         <p className="text-[.5rem] text-white text-center pt-[.2rem]">Mug</p>
                       </div>
-
                     </div>
+                    <div className="">
+                      <div className="w-full flex justify-center">
+                        <div className="w-[53%]">
+                          <Image src="/voucher 150.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                          <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 150.000</p>
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-[1rem] mt-[.5rem]">
+                        <div className="h-[4rem] w-full">
+                          <Image src="/voucher 50.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                          <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 50.000</p>
+                        </div>
+                        <div className="h-[4rem]">
+                          <Image src="/voucher 100.jpg" alt="" height={1000} width={1000} className=" shadow-md shadow-md" />
+                          <p className="text-[.5rem] text-white text-center pt-[.2rem]">Vocer RP. 100.000</p>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
